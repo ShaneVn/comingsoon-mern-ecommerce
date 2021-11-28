@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductScreen from "./screens/ProductScreen";
 import HomeScreen from "./screens/HomeScreen";
+import CartScreen from "./screens/CartScreen";
 
 function App() {
   return (
@@ -15,13 +16,14 @@ function App() {
             </Link>
         </div>
         <div>
-          <a >Cart</a>
-          <a >Sign In</a>
+          <Link to='/cart'>Cart</Link>
+          <Link to='/signin'>Sign In</Link>
         </div>
       </header>
       <main>
        
         <Routes>
+          <Route  path="/cart/:id" element= {<CartScreen/>}/>
         <Route path= "/product/:id" element={<ProductScreen/>}/>
         <Route exact path = "/" element = {<HomeScreen/>}/>
         </Routes>
