@@ -5,8 +5,10 @@ import ProductScreen from "./screens/ProductScreen";
 import HomeScreen from "./screens/HomeScreen";
 import CartScreen from "./screens/CartScreen";
 import { useDispatch, useSelector } from "react-redux";
-import SigninScreen from "./screens/signinScreen";
+import SigninScreen from "./screens/SigninScreen";
 import { signout } from "./actions/userAction";
+import RegisterScreen from "./screens/RegisterScreen";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -19,6 +21,8 @@ function App() {
   const signoutHandler = ()=>{
     dispatch(signout())
   }
+
+  console.log(userInfo)
 
   return (
     <BrowserRouter>
@@ -37,17 +41,17 @@ function App() {
               )}
             </Link>
             {userInfo ? (
-              <div className = "dropdown">
-              <Link to="#"> {userInfo.name}
-              <i className="fa fa-caret-down"></i>
-              </Link>
-              <ul className = "dropdown-content">
-                <li>
-                  <Link to ="#signout" onClick={signoutHandler}>
-                    Sign out
-                  </Link>
-                </li>
-              </ul>
+              <div className="dropdown">
+                <Link to="#">
+                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="#signout" onClick={signoutHandler}>
+                      Sign Out
+                    </Link>
+                  </li>
+                </ul>
               </div>
             ) : (
               <Link to="/signin">Sign In</Link>
@@ -59,6 +63,8 @@ function App() {
             <Route path="/cart/:id" element={<CartScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/signin" element={<SigninScreen />} />
+            <Route path="/register" element = {<RegisterScreen/>} />
+            <Route path = "/shipping" element = {<ShippingAddressScreen/>}></Route>
             <Route exact path="/" element={<HomeScreen />} />
           </Routes>
         </main>
