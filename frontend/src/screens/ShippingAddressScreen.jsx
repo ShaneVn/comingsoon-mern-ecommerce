@@ -31,10 +31,12 @@ export default function ShippingAddressScreen() {
 
 
   
-  
-    // if(!userInfo){
-    //   navigate('/signin')
-    // }
+  useEffect(() => {
+    if(!userInfo){
+      navigate('/signin')
+    }
+  }, [])
+    
   
 
   return (
