@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  } from "react";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,13 @@ export default function PaymentMethodScreen() {
     const navigate = useNavigate()
 
 
+    
+      if (!shippingAddres) {
+        navigate('/shipping');
+      }
+   
+
+
     const submitHandler = (e) =>{
             e.preventDefault()
             dispatch(savePaymentMethod(paymentMethod))
@@ -19,11 +26,6 @@ export default function PaymentMethodScreen() {
 
     }
 
-    useEffect(() => {
-        if(!shippingAddres){
-          navigate('/shipping')
-        }
-      }, [])
 
   return (
     <div>

@@ -22,9 +22,9 @@ export default function CartScreen() {
   }
 
 
-  const checkoutHandler = ()=>{
-    navigate('/signin?redirect=shipping')
-  }
+  const checkoutHandler = () => {
+    navigate('/signin?redirect=/shipping');
+  };
 
   const dispatch = useDispatch();
   useEffect(() => {

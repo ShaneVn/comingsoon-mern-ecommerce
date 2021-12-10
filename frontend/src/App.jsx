@@ -10,6 +10,7 @@ import { signout } from "./actions/userAction";
 import RegisterScreen from "./screens/RegisterScreen";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -23,7 +24,7 @@ function App() {
     dispatch(signout())
   }
 
-  console.log(userInfo)
+  
 
   return (
     <BrowserRouter>
@@ -67,6 +68,7 @@ function App() {
             <Route path="/register" element = {<RegisterScreen/>} />
             <Route path = "/shipping" element = {<ShippingAddressScreen/>}/>
             <Route path = "/payment" element={<PaymentMethodScreen/>}/>
+            <Route path= "/placeorder" element={<PlaceOrderScreen/>}/>
             <Route exact path="/" element={<HomeScreen />} />
           </Routes>
         </main>

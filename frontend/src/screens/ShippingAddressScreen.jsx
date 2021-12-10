@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import { saveShippingAddress } from "../actions/cartAction";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { useNavigate } from "react-router";
@@ -14,13 +14,19 @@ export default function ShippingAddressScreen() {
   const cart = useSelector((state)=> state.cart)
   const {shippingAddress} = cart
 
-  console.log(userInfo)
+
+
+  if (!userInfo) {
+    navigate('/signin');
+  }
+ 
+  
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
       saveShippingAddress({ fullName, address, city, postalCode, country })
     );
-    navigate('/payment')
+    navigate('/payment');
   };
 
   const [fullName, setFullName] = useState(shippingAddress.fullName);
@@ -31,11 +37,7 @@ export default function ShippingAddressScreen() {
 
 
   
-  useEffect(() => {
-    if(!userInfo){
-      navigate('/signin')
-    }
-  }, [])
+
     
   
 
