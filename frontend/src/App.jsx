@@ -62,6 +62,7 @@ function App() {
         </header>
         <main>
           <Routes>
+          <Route path="/cart" element={<CartScreen />}></Route>
             <Route path="/cart/:id" element={<CartScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/signin" element={<SigninScreen />} />

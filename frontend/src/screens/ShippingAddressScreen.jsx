@@ -1,5 +1,5 @@
 import {useState} from "react";
-import { saveShippingAddress } from "../actions/cartAction";
+import { saveShippingAddress } from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from 'react-redux';
