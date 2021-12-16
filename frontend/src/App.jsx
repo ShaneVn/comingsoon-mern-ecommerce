@@ -11,6 +11,9 @@ import RegisterScreen from "./screens/RegisterScreen";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import PaymentMethodScreen from "./screens/PaymentMethodScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -19,12 +22,10 @@ function App() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  const dispatch = useDispatch()
-  const signoutHandler = ()=>{
-    dispatch(signout())
-  }
-
-  
+  const dispatch = useDispatch();
+  const signoutHandler = () => {
+    dispatch(signout());
+  };
 
   return (
     <BrowserRouter>
@@ -45,9 +46,15 @@ function App() {
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
-                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
+                  {userInfo.name} <i className="fa fa-caret-down"></i>{" "}
                 </Link>
                 <ul className="dropdown-content">
+                  <li>
+                    <Link to ='/profile'>Profile</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderhistory">Orders</Link>
+                  </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
                       Sign Out
@@ -62,14 +69,20 @@ function App() {
         </header>
         <main>
           <Routes>
-          <Route path="/cart" element={<CartScreen />}></Route>
+            <Route path="/cart" element={<CartScreen />}></Route>
             <Route path="/cart/:id" element={<CartScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
             <Route path="/signin" element={<SigninScreen />} />
-            <Route path="/register" element = {<RegisterScreen/>} />
-            <Route path = "/shipping" element = {<ShippingAddressScreen/>}/>
-            <Route path = "/payment" element={<PaymentMethodScreen/>}/>
-            <Route path= "/placeorder" element={<PlaceOrderScreen/>}/>
+            <Route path="/register" element={<RegisterScreen />} />
+            <Route path="/shipping" element={<ShippingAddressScreen />} />
+            <Route path="/payment" element={<PaymentMethodScreen />} />
+            <Route path="/placeorder" element={<PlaceOrderScreen />} />
+            <Route path="/order/:id" element={<OrderScreen />}></Route>
+            <Route path="/profile" element={<ProfileScreen/>}></Route>
+            <Route
+              path="/orderhistory"
+              element={<OrderHistoryScreen />}
+            ></Route>
             <Route exact path="/" element={<HomeScreen />} />
           </Routes>
         </main>
