@@ -14,6 +14,7 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import OrderHistoryScreen from "./screens/OrderHistoryScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -78,7 +79,11 @@ function App() {
             <Route path="/payment" element={<PaymentMethodScreen />} />
             <Route path="/placeorder" element={<PlaceOrderScreen />} />
             <Route path="/order/:id" element={<OrderScreen />}></Route>
-            <Route path="/profile" element={<ProfileScreen/>}></Route>
+            <Route path="/profile" 
+            element={
+            <PrivateRoute>
+            <ProfileScreen/>
+            </PrivateRoute>}></Route>
             <Route
               path="/orderhistory"
               element={<OrderHistoryScreen />}
